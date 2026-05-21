@@ -1,5 +1,5 @@
-// Nivel especial donde el usuario elige el tamaño de las filas y las columnas a su gusto,
-// al igual que elige la cantidad de minas a su gusto (la cantidad de minas no puede ser superior
+// Nivel especial donde el usuario elige el tamaño de las filas y las columnas a su gusto, al
+// igual que elige la cantidad de minas a su gusto (la cantidad de minas no puede ser superior
 //a la mitad de las celdas totales)
 public class Personalizado extends NivelDificultad {
 
