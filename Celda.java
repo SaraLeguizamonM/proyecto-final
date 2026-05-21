@@ -24,7 +24,7 @@ public abstract class Celda {
     // es decir, para esa celda descubierto es false
     public void toggleBandera() {
         if (!descubierta) {
-            
+
             // Cambia el estado de la bandera entre true y false.
             // (si la celda tiene bandera, se la quita; si no tiene bandera, se la pone)
             this.bandera = !this.bandera;
@@ -36,6 +36,7 @@ public abstract class Celda {
         this.descubierta = true;
     }
 
-    // Método abstracto: cada hija decide qué caracter mostrar al imprimirse en consola
+    // Método abstracto donde cada clase hija de celda decide qué caracter mostrar
+    // al imprimirse en consola, es decir, decide si mostrar una bandera, una bomba, etc.
     public abstract char getSimbolo();
 }
