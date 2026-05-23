@@ -1,14 +1,14 @@
 import java.util.Scanner;
 
 public class Consola {
-    private Scanner scanner;
+    private Scanner sc;
 
     public Consola() {
-        this.scanner = new Scanner(System.in);
+        this.sc = new Scanner(System.in);
     }
 
     public String leerComando() {
-        return scanner.nextLine().trim();
+        return sc.nextLine().trim();
     }
 
     public void mostrarTablero(Tablero tablero) {
@@ -26,7 +26,48 @@ public class Consola {
         System.out.println("||  5. Ver historial(Score)    ||");
         System.out.println("||  0. Salir                   ||");
         System.out.println("================================");
-        System.out.print("Elige una opción: "); // Remite a juego
+        System.out.print("Elige una opcion: "); // Remite a juego
+    }
+
+    // Muestra las acciones disponibles en cada turno
+    public void mostrarAcciones() {
+        System.out.println("¿Qué deseas hacer?");
+        System.out.println("====================");
+        System.out.println("1. Descubrir celda  ");
+        System.out.println("2. Poner/quitar     ");
+        System.out.println("0. Abandonar partida");
+        System.out.print("Opción: ");
+    }
+
+    // Pide fila y columna por separado y valida que sean numeros validos
+    public int[] leerCoordenadas() {
+        int fila = -1;
+        int col = -1;
+
+        // Pedir fila hasta que sea valida
+        boolean filaValida = false;
+        while (!filaValida) {
+            try {
+                System.out.print("Fila: ");
+                fila = Integer.parseInt(sc.nextLine().trim());
+                filaValida = true;
+            } catch (Exception e) {
+                System.out.println("Ingresa solo numeros enteros");
+            }
+        }
+
+        // Pedir columna hasta que sea válida
+        boolean colValida = false;
+        while (!colValida) {
+            try {
+                System.out.print("Columna: ");
+                col = Integer.parseInt(sc.nextLine().trim());
+                colValida = true;
+            } catch (Exception e) {
+                System.out.println("Ingresa solo numeros enteros");
+            }
+        }
+        return new int[] { fila, col };
     }
 
     // Verifca el estado de la partida
