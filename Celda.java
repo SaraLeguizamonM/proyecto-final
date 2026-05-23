@@ -5,7 +5,8 @@ public abstract class Celda {
     protected boolean descubierta;
     protected boolean bandera;
 
-    // Se usa un constructor para darle coordenadas a la celda al ser creada, es decir, saber
+    // Se usa un constructor para darle coordenadas a la celda al ser creada, es
+    // decir, saber
     // en que número de fila y columna se encuentra
     public Celda(int fila, int columna) {
         this.fila = fila;
@@ -15,14 +16,23 @@ public abstract class Celda {
     }
 
     // Métodos get para obtener-consultar la posición y estado de la celda
-    public int getFila() { return fila; }
-    public int getColumna() { return columna; }
-    public boolean isDescubierta() { return descubierta; }
+    public int getFila() {
+        return fila;
+    }
 
-    // Se realiza un toggle, un método que funciona como un interruptor para la bandera.
+    public int getColumna() {
+        return columna;
+    }
+
+    public boolean getDescubierta() {
+        return descubierta;
+    }
+
+    // Se realiza un toggle, un método que funciona como un interruptor para la
+    // bandera.
     // Solo se puede poner bandera si la celda no se ha descubierto,
     // es decir, para esa celda descubierto es false
-    public void toggleBandera() {
+    public void cambiarBandera() {
         if (!descubierta) {
 
             // Cambia el estado de la bandera entre true y false.
@@ -31,12 +41,14 @@ public abstract class Celda {
         }
     }
 
-    // Cambia el estado de la celda a descubierta cuando el jugador hace clic en esta
+    // Cambia el estado de la celda a descubierta cuando el jugador hace clic en
+    // esta
     public void descubrir() {
         this.descubierta = true;
     }
 
     // Método abstracto donde cada clase hija de celda decide qué caracter mostrar
-    // al imprimirse en consola, es decir, decide si mostrar una bandera, una bomba, etc.
+    // al imprimirse en consola, es decir, decide si mostrar una bandera, una bomba,
+    // etc.
     public abstract char getSimbolo();
 }

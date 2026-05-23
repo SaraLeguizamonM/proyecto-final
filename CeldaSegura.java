@@ -14,16 +14,20 @@ public class CeldaSegura extends Celda {
 
     // Método para get obtener el valor de las minas cercanas,
     // y método set modificar el contador de minas vecinas
-    public int getMinasCercanas() { return minasCercanas; }
-    
+    public int getMinasCercanas() {
+        return minasCercanas;
+    }
+
     public void setMinasCercanas(int minas) {
         if (minas >= 0 && minas <= 8) {
             this.minasCercanas = minas;
         }
     }
 
-    // El @override indica que se está reescribiendo el método abstracto de la clase madre (Celda)
-    // Se reescribe para decirle a esta clase hija que simbolos mostrar según el caso
+    // El @override indica que se está reescribiendo el método abstracto de la clase
+    // madre (Celda)
+    // Se reescribe para decirle a esta clase hija que simbolos mostrar según el
+    // caso
     @Override
     public char getSimbolo() {
 
@@ -33,35 +37,47 @@ public class CeldaSegura extends Celda {
         if (bandera && descubierta) {
             return 'X'; // Muestra la X de bandera incorrecta
         }
-        
+
         if (bandera) {
-            // Si la celda tiene bandera y sigue oculta durante la partida normal, es decir, sin perder
+            // Si la celda tiene bandera y sigue oculta durante la partida normal, es decir,
+            // sin perder
             return 'P';
         }
-        
+
         // Si la casilla ya fue descubierta por el jugador o la cascada,
         // y el valor de minas cercanas de esa celda es 0
         if (descubierta) {
             if (minasCercanas == 0) {
                 return '0'; // Muestra el cero explícito para las zonas vacías donde no hay mina
             }
-            
-            // Mediente un switch (que intercambie de enteros a char), el número correspondiente
-            // a minas cercanas se covierte de un entero a un caracter para que el método abstracto
+
+            // Mediente un switch (que intercambie de enteros a char), el número
+            // correspondiente
+            // a minas cercanas se covierte de un entero a un caracter para que el método
+            // abstracto
             // pueda funcionar
             switch (minasCercanas) {
-                case 1: return '1';
-                case 2: return '2';
-                case 3: return '3';
-                case 4: return '4';
-                case 5: return '5';
-                case 6: return '6';
-                case 7: return '7';
-                case 8: return '8';
-                default: return '0';
+                case 1:
+                    return '1';
+                case 2:
+                    return '2';
+                case 3:
+                    return '3';
+                case 4:
+                    return '4';
+                case 5:
+                    return '5';
+                case 6:
+                    return '6';
+                case 7:
+                    return '7';
+                case 8:
+                    return '8';
+                default:
+                    return '0';
             }
         }
-        
-        return ' '; // Si la celda está oculta y no tiene bandera, se muestra vacía
+
+        return '■'; // Si la celda está oculta y no tiene bandera, se muestra vacía
     }
 }

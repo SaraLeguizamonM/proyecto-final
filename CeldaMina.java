@@ -8,18 +8,22 @@ public class CeldaMina extends Celda {
         super(fila, columna);
     }
 
-    // Si el juego terminó y perdimos, este método ayuda a saber si esta celda con mina explotó
-    public boolean esExplotada() {
+    // Si el juego terminó y perdimos, este método ayuda a saber si esta celda con
+    // mina explotó
+    public boolean getExplotada() {
         return descubierta;
     }
 
-    // El @override indica que se está reescribiendo el método abstracto de la clase madre (Celda)
-    // Se reescribe para decirle a esta clase hija que simbolos mostrar según el caso
+    // El @override indica que se está reescribiendo el método abstracto de la clase
+    // madre (Celda)
+    // Se reescribe para decirle a esta clase hija que simbolos mostrar según el
+    // caso
     @Override
     public char getSimbolo() {
 
         if (bandera) {
-            // Si la celda tiene bandera, muestra la 'P', simbolo parecido a la forma de una bandera
+            // Si la celda tiene bandera, muestra la 'P', simbolo parecido a la forma de una
+            // bandera
             return 'P';
         }
 
@@ -29,6 +33,6 @@ public class CeldaMina extends Celda {
             return '*';
         }
 
-        return ' '; // Si está oculta, se muestra vacía para no delatarse en el tablero
+        return '■'; // Si está oculta, se muestra vacía para no delatarse en el tablero
     }
 }
