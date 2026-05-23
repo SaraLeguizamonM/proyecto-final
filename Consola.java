@@ -16,6 +16,7 @@ public class Consola {
     }
 
     public void mostrarMenu() { // Imprimir menu
+        System.out.println("                                ");
         System.out.println("================================");
         System.out.println("||         BUSCAMINAS          ||");
         System.out.println("================================");
@@ -27,16 +28,22 @@ public class Consola {
         System.out.println("||  0. Salir                   ||");
         System.out.println("================================");
         System.out.print("Elige una opcion: "); // Remite a juego
+        System.out.println("                                ");
+
     }
 
     // Muestra las acciones disponibles en cada turno
     public void mostrarAcciones() {
+        System.out.println("                       ");
         System.out.println("¿Qué deseas hacer?");
         System.out.println("====================");
         System.out.println("1. Descubrir celda  ");
         System.out.println("2. Poner/quitar     ");
         System.out.println("0. Abandonar partida");
+        System.out.println("=====================");
         System.out.print("Opción: ");
+        System.out.println("                        ");
+
     }
 
     // Pide fila y columna por separado y valida que sean numeros validos

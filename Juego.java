@@ -35,7 +35,7 @@ public class Juego {
                     corriendo = false;
                     break;
                 default:
-                    System.out.println("Opción invalida, intenta de nuevo");
+                    System.out.println("Opcion invalida, intenta de nuevo");
             }
         }
     }

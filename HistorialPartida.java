@@ -3,23 +3,29 @@ import java.util.ArrayList;
 public class HistorialPartida {
     private ArrayList<Partida> partidas;
 
+    // Constructor
     public HistorialPartida() {
         this.partidas = new ArrayList<>();
     }
 
+    // Agrega una nueva partida al historial al terminar cada partida
     public void agregar(Partida p) {
         partidas.add(p);
     }
 
+    // Ordena el historial de menor a mayor tiempo
     public void ordenarPorTiempo() {
-        bubbleSort(); // metodo de ordenamiento
+        bubbleSort(); // metodo de ordenamiento de burbuja
     }
 
+    // Busca una partida segun el nivel usando BinarySearch, pero primero se ordena
+    // alfabeticamente,
+    // pero al terminar se restaura el orden por tiempo
     public Partida buscarPorDificultad(String dificultad) {
         int indice = binarySearch(dificultad);
         Partida resultado;
         if (indice == -1) {
-            System.out.println("No se encontró partida con dificultad: " + dificultad);
+            System.out.println("No se encontro partida con dificultad: " + dificultad);
             resultado = null;
         } else {
             resultado = partidas.get(indice);
@@ -29,17 +35,19 @@ public class HistorialPartida {
 
     public void mostrar() {
         if (partidas.isEmpty()) {
-            System.out.println("No hay partidas registradas.");
+            System.out.println("No hay partidas registradas");
         } else {
-            System.out.println("╔══════════════════════════════════════════════════════════════╗");
-            System.out.println("║                    HISTORIAL DE PARTIDAS                     ║");
-            System.out.println("╠══════════════════════════════════════════════════════════════╣");
+            System.out.println("====================================================================================");
+            System.out.println("||                              HISTORIAL DE PARTIDAS|                             ||");
+            System.out.println("====================================================================================");
             for (int i = 0; i < partidas.size(); i++) {
-                System.out.println("║ " + (i + 1) + ". " + partidas.get(i));
+                System.out.println("|| " + (i + 1) + ". " + partidas.get(i));
             }
-            System.out.println("╚══════════════════════════════════════════════════════════════╝");
+            System.out.println("====================================================================================");
         }
     }
+
+    // Metodos de ordenamiento y busqueda
 
     private void bubbleSort() {
         if (partidas == null || partidas.size() < 2) {
@@ -64,6 +72,7 @@ public class HistorialPartida {
         int inicio = 0;
         int fin = partidas.size() - 1;
         int indice = -1;
+
         while (inicio <= fin && indice == -1) {
             int mid = (inicio + fin) / 2;
             int cmp = partidas.get(mid).getDificultad().compareTo(dificultad);

@@ -165,7 +165,7 @@ public class Tablero {
 
     public void imprimir() {
         // Encabezado de columnas
-        System.out.print("   ");
+        System.out.print("    ");
         for (int j = 0; j < columnas; j++) {
             System.out.printf("%2d ", j); // %2d el espacio + int
         }
