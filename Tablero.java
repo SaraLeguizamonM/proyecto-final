@@ -28,13 +28,12 @@ public class Tablero {
         Random rand = new Random();
         int cont = 0;
         int fila, columna;
-        while (cont <= totalMinas) {
-            fila = rand.nextInt(0, filas - 1);
-            columna = rand.nextInt(0, columnas - 1);
+        while (cont < totalMinas) {
+            fila = rand.nextInt(0, filas);
+            columna = rand.nextInt(0, columnas);
             // verifica si hay una mina o no, en caso que si busca en otra posicion
             if (celdas[fila][columna] instanceof CeldaMina) { // el instanceof permite ver si el objeto pertenece a esa
-                                                              // clase
-                continue; // en caso que no, remplaza
+                continue; // clase, en caso que no, remplaza
             }
             celdas[fila][columna] = new CeldaMina(fila, columna); // Remplaza celdaSegura por celdaMina
             cont++;
@@ -180,7 +179,7 @@ public class Tablero {
 
         // Filas del tablero
         for (int i = 0; i < filas; i++) {
-            System.out.printf("%2d |", i); // número de fila
+            System.out.printf("%2d |", i); // numero de fila
             for (int j = 0; j < columnas; j++) {
                 Celda celda = celdas[i][j];
                 char simbolo;

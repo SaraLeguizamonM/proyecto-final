@@ -28,7 +28,6 @@ public class Consola {
         System.out.println("||  0. Salir                   ||");
         System.out.println("================================");
         System.out.print("Elige una opcion: "); // Remite a juego
-        System.out.println("                                ");
 
     }
 
@@ -41,8 +40,7 @@ public class Consola {
         System.out.println("2. Poner/quitar     ");
         System.out.println("0. Abandonar partida");
         System.out.println("=====================");
-        System.out.print("Opción: ");
-        System.out.println("                        ");
+        System.out.print("Opcion: ");
 
     }
 

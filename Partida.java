@@ -79,7 +79,7 @@ public class Partida {
                     // Mientras más celdas y minas es necesario más tiempo
                     int totalCeldas = filas * columnas;
                     double porcentaje = (double) minas / totalCeldas;
-                    // Base de tiempo según tamaño + dificultad por cantidad de minas
+                    // Base de tiempo segun tamaño + dificultad por cantidad de minas
                     long limiteExcelente = (long) (totalCeldas * 0.5 * (1 + porcentaje));
                     long limiteBueno = (long) (totalCeldas * 1.0 * (1 + porcentaje));
                     long limiteRegular = (long) (totalCeldas * 2.0 * (1 + porcentaje));

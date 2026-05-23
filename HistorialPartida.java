@@ -37,13 +37,13 @@ public class HistorialPartida {
         if (partidas.isEmpty()) {
             System.out.println("No hay partidas registradas");
         } else {
-            System.out.println("====================================================================================");
-            System.out.println("||                              HISTORIAL DE PARTIDAS|                             ||");
-            System.out.println("====================================================================================");
+            System.out.println("================================================================================");
+            System.out.println("||                            HISTORIAL DE PARTIDAS                           ||");
+            System.out.println("================================================================================");
             for (int i = 0; i < partidas.size(); i++) {
-                System.out.println("|| " + (i + 1) + ". " + partidas.get(i));
+                System.out.println("|| " + (i + 1) + ". " + partidas.get(i) + "  ||");
             }
-            System.out.println("====================================================================================");
+            System.out.println("================================================================================");
         }
     }
 
