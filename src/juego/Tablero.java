@@ -1,5 +1,11 @@
+package src.juego;
+
 import java.util.ArrayList;
 import java.util.Random;
+
+import src.celdas.Celda;
+import src.celdas.CeldaMina;
+import src.celdas.CeldaSegura;
 
 public class Tablero {
     private int filas;
@@ -73,7 +79,7 @@ public class Tablero {
         Celda celda = celdas[fila][columna];
         // Verifica si ya esta descubierta o si hay una bandera, en caso que si no hace
         // nada
-        if (celda.getDescubierta() || celda.bandera) {
+        if (celda.getDescubierta() || celda.getBandera()) {
             return false;
         }
         celda.descubrir();
@@ -117,7 +123,7 @@ public class Tablero {
                 if (vecino.getDescubierta()) { // revisar si esta descubierto
                     continue;
                 }
-                if (vecino.bandera) { // revisar si tiene bandera
+                if (vecino.getBandera()) { // revisar si tiene bandera
                     continue;
                 }
                 if (vecino instanceof CeldaMina) { // revisar si es una mina
@@ -180,7 +186,7 @@ public class Tablero {
                 Celda celda = celdas[i][j];
                 char simbolo;
 
-                if (!celda.getDescubierta() && celda.bandera) {
+                if (!celda.getDescubierta() && celda.getBandera()) {
                     simbolo = 'P'; // tiene bandera
                 } else if (!celda.getDescubierta()) {
                     simbolo = '■'; // celda oculta

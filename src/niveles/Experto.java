@@ -1,3 +1,5 @@
+package src.niveles;
+
 // Configuración predefinida para el nivel más difícil del juego, es decir, experto
 public class Experto extends NivelDificultad {
     public Experto() {

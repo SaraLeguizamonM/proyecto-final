@@ -1,3 +1,5 @@
+package src.niveles;
+
 // Configuración predefinida para el nivel intermedio
 public class Intermedio extends NivelDificultad {
     public Intermedio() {

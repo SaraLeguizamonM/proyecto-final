@@ -1,3 +1,5 @@
+package src.juego;
+
 import java.util.Scanner;
 
 public class Consola {

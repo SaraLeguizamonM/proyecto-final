@@ -1,3 +1,9 @@
+package src.juego;
+
+import src.historial.HistorialPartida;
+import src.historial.Partida;
+import src.niveles.*;
+
 public class Juego {
     private Tablero tablero;
     private NivelDificultad nivel;

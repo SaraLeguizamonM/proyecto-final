@@ -1,3 +1,5 @@
+package src.celdas;
+
 // Tipo de celda que representa a las celdas normales que muestran
 // los números de la cantidad de minas alrededor
 public class CeldaSegura extends Celda {

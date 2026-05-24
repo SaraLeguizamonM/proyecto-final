@@ -1,3 +1,5 @@
+package src.celdas;
+
 // Estructura base abstracta para cualquier celda del tablero
 public abstract class Celda {
     protected int fila;
@@ -26,6 +28,10 @@ public abstract class Celda {
 
     public boolean getDescubierta() {
         return descubierta;
+    }
+
+    public boolean getBandera(){
+        return bandera;
     }
 
     // Se realiza un toggle, un método que funciona como un interruptor para la

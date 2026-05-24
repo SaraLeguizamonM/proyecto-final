@@ -1,3 +1,5 @@
+package src.historial;
+
 import java.util.ArrayList;
 
 public class HistorialPartida {

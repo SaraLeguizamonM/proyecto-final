@@ -1,3 +1,5 @@
+package src.historial;
+
 public class Partida {
     private String dificultad;
     private int filas;

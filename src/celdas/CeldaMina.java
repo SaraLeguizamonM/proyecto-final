@@ -1,3 +1,5 @@
+package src.celdas;
+
 // Tipo de celda que representa una celda con mina.
 // Extiende de celda, porque una celda con mina, es de por sí, una celda
 public class CeldaMina extends Celda {
