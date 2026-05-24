@@ -25,6 +25,7 @@ public class Consola {
         System.out.println("||  3. Experto:      (16x30)   ||");
         System.out.println("||  4. Personalizado           ||");
         System.out.println("||  5. Ver historial(Score)    ||");
+        System.out.println("||  6. Buscar partida          ||");
         System.out.println("||  0. Salir                   ||");
         System.out.println("================================");
         System.out.print("Elige una opcion: "); // Remite a juego
@@ -44,34 +45,31 @@ public class Consola {
 
     }
 
+    // Metodo auxiliar, lee y valida un numero dentro de un rango para evitar un
+    // error
+    private int leerNumeroEnRango(String nomC, int min, int max) {
+        int valor = -1;
+        boolean valido = false;
+        while (!valido) {
+            try {
+                System.out.print(nomC + " (" + min + "-" + max + "): ");
+                valor = Integer.parseInt(sc.nextLine().trim());
+                if (valor >= min && valor <= max) {
+                    valido = true;
+                } else {
+                    System.out.println("Debe estar entre " + min + " y " + max);
+                }
+            } catch (Exception e) {
+                System.out.println("Ingresa solo numeros enteros");
+            }
+        }
+        return valor;
+    }
+
     // Pide fila y columna por separado y valida que sean numeros validos
-    public int[] leerCoordenadas() {
-        int fila = -1;
-        int col = -1;
-
-        // Pedir fila hasta que sea valida
-        boolean filaValida = false;
-        while (!filaValida) {
-            try {
-                System.out.print("Fila: ");
-                fila = Integer.parseInt(sc.nextLine().trim());
-                filaValida = true;
-            } catch (Exception e) {
-                System.out.println("Ingresa solo numeros enteros");
-            }
-        }
-
-        // Pedir columna hasta que sea válida
-        boolean colValida = false;
-        while (!colValida) {
-            try {
-                System.out.print("Columna: ");
-                col = Integer.parseInt(sc.nextLine().trim());
-                colValida = true;
-            } catch (Exception e) {
-                System.out.println("Ingresa solo numeros enteros");
-            }
-        }
+    public int[] leerCoordenadas(int maxFilas, int maxColumnas) {
+        int fila = leerNumeroEnRango("Fila", 0, maxFilas - 1);
+        int col = leerNumeroEnRango("Columna", 0, maxColumnas - 1);
         return new int[] { fila, col };
     }
 

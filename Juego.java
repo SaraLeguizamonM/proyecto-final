@@ -31,6 +31,9 @@ public class Juego {
                 case "5":
                     mostrarHistorial();
                     break;
+                case "6":
+                    buscarEnHistorial();
+                    break;
                 case "0":
                     corriendo = false;
                     break;
@@ -53,9 +56,18 @@ public class Juego {
 
         boolean jugando = true;
         while (jugando) {
-            consola.mostrarTablero(tablero); // (desde consola)
-            consola.mostrarAcciones(); // muestra el menu de acciones (desde consola)
-            String opcion = consola.leerComando();
+            consola.mostrarTablero(tablero);
+            consola.mostrarAcciones();
+            String opcion = consola.leerComando().trim();
+
+            // Si la opcion no es valida, volver a pedir sin contar como turno para evitar
+            // letras
+            while (!opcion.equals("1") && !opcion.equals("2") && !opcion.equals("0")) {
+                System.out.println("Opcion invalida, elige 1, 2 o 0.");
+                consola.mostrarAcciones();
+                opcion = consola.leerComando().trim();
+            }
+
             jugando = procesarTurno(opcion);
         }
     }
@@ -65,7 +77,7 @@ public class Juego {
         switch (opcion) {
             case "1":
                 // Descubrir celda
-                int[] coordD = consola.leerCoordenadas();
+                int[] coordD = consola.leerCoordenadas(nivel.getFilas(), nivel.getColumnas());
                 int filaD = coordD[0];
                 int colD = coordD[1];
                 boolean esMina = tablero.descubrir(filaD, colD);
@@ -74,7 +86,7 @@ public class Juego {
                     consola.mostrarTablero(tablero);
                     finalizarPartida("DERROTA");
                     sigue = false;
-                } else if (tablero.Victoria()) {
+                } else if (tablero.victoria()) {
                     consola.mostrarTablero(tablero);
                     finalizarPartida("VICTORIA");
                     sigue = false;
@@ -83,7 +95,7 @@ public class Juego {
 
             case "2":
                 // Poner o quitar bandera
-                int[] coordB = consola.leerCoordenadas();
+                int[] coordB = consola.leerCoordenadas(nivel.getFilas(), nivel.getColumnas());
                 tablero.cambiarBandera(coordB[0], coordB[1]);
                 break;
 
@@ -119,16 +131,28 @@ public class Juego {
         historial.mostrar();
     }
 
+    // Metodo para buscar especificamente gracias al binarySearch
+    private void buscarEnHistorial() {
+        System.out.println("Niveles: Principiante, Intermedio, Experto, Personalizado");
+        System.out.print("Ingresa el nivel que desea buscar: ");
+        String dificultad = consola.leerComando().trim();
+        Partida encontrada = historial.buscarPorDificultad(dificultad);
+        if (encontrada != null) {
+            System.out.println("Partida encontrada: ");
+            System.out.println(encontrada);
+        }
+    }
+
     // Partida personalizada con sus respectivas restrincciones
     private void iniciarPartidaPersonalizada() {
         Personalizado p = new Personalizado();
         try {
             System.out.print("Filas (3-30): ");
-            int f = Integer.parseInt(consola.leerComando());
+            int f = Integer.parseInt(consola.leerComando().trim());
             System.out.print("Columnas (3-30): ");
-            int c = Integer.parseInt(consola.leerComando());
+            int c = Integer.parseInt(consola.leerComando().trim());
             System.out.print("Minas: ");
-            int m = Integer.parseInt(consola.leerComando());
+            int m = Integer.parseInt(consola.leerComando().trim());
             p.setDimensiones(f, c, m);
             iniciarPartida(p);
         } catch (IllegalArgumentException e) {

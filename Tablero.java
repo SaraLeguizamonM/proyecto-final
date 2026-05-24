@@ -8,6 +8,10 @@ public class Tablero {
     private Celda[][] celdas;
     private int descubiertasCont;
 
+    // Asignacion de los valores de las celdas adyacentes para mejor busqueda
+    private final int[] externosFila = { -1, -1, -1, 0, 0, +1, +1, +1 };
+    private final int[] externosCol = { -1, 0, +1, -1, +1, -1, 0, +1 };
+
     public Tablero(int filas, int columnas, int totalMinas) {
         this.filas = filas;
         this.columnas = columnas;
@@ -29,8 +33,8 @@ public class Tablero {
         int cont = 0;
         int fila, columna;
         while (cont < totalMinas) {
-            fila = rand.nextInt(0, filas);
-            columna = rand.nextInt(0, columnas);
+            fila = rand.nextInt(filas);
+            columna = rand.nextInt(columnas);
             // verifica si hay una mina o no, en caso que si busca en otra posicion
             if (celdas[fila][columna] instanceof CeldaMina) { // el instanceof permite ver si el objeto pertenece a esa
                 continue; // clase, en caso que no, remplaza
@@ -48,10 +52,6 @@ public class Tablero {
                     continue;
                 }
                 int cont = 0; // se reinicia por cada celda
-
-                // Asignacion de los valores de las celdas adyacentes para mejor busqueda
-                int[] externosFila = { -1, -1, -1, 0, 0, +1, +1, +1 };
-                int[] externosCol = { -1, 0, +1, -1, +1, -1, 0, +1 };
 
                 for (int k = 0; k < 8; k++) { // Va posicionandose en cada celda adyacente
                     int ni = i + externosFila[k];
@@ -92,10 +92,6 @@ public class Tablero {
     }
 
     private void descubrirCascada(int fila, int columna) {
-        // Asignacion de los valores de las celdas adyacentes para mejor busqueda
-        int[] externosFila = { -1, -1, -1, 0, 0, +1, +1, +1 };
-        int[] externosCol = { -1, 0, +1, -1, +1, -1, 0, +1 };
-
         ArrayList<int[]> pendientes = new ArrayList<>();
         pendientes.add(new int[] { fila, columna }); // Crea una lista de celdas que aun no se ha revisado
 
@@ -147,7 +143,7 @@ public class Tablero {
         }
     }
 
-    public boolean Victoria() {
+    public boolean victoria() {
         // verifica si descubrio todas las celdas seguras, y ver si gano
         int celdasSeguras = (filas * columnas) - totalMinas;
         return descubiertasCont == celdasSeguras;
